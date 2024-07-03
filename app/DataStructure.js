@@ -16,11 +16,10 @@ export class DataStructure {
 
   produceData = () => {
     this.finalData = {};
-    for (let i = 0; i <= this.companiesData.length; i++) {
+    for (let i = 0; i < this.companiesData.length; i++) {
       const company = { name: this.companiesData[i].name, users: "user" };
-      this.finalData.company = company
+      this.finalData[i] = company
     }
     console.log(this.finalData);
   };
-
 }
