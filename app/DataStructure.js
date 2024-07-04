@@ -33,9 +33,23 @@ export class DataStructure {
       this.finalData[i].numberOfUsers = this.finalData[i].users.length;
     }
     console.log(this.finalData);
+    this.populateTable();
   };
 
-  findItemById(list, id) {
-    return list.find((obj) => obj.id === id).name;
-  }
+  populateTable = () => {
+    const tableBody = document.querySelector(".table-body");
+    for (let i = 0; i < this.finalData.length; i++) {
+      const row = document.createElement("tr");
+      const cell1 = document.createElement("td");
+      const cell2 = document.createElement("td");
+      const cell3 = document.createElement("td");
+      cell1.innerHTML = i + 1;
+      cell2.innerHTML = this.finalData[i].name;
+      cell3.innerHTML = this.finalData[i].numberOfUsers;
+      row.appendChild(cell1);
+      row.appendChild(cell2);
+      row.appendChild(cell3);
+      tableBody.appendChild(row);
+    }
+  };
 }
