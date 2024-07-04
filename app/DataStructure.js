@@ -1,3 +1,5 @@
+import { ShowButton } from "./ShowButton";
+
 export class DataStructure {
   constructor() {
     this.usersDataURL = "http://localhost:3000/users";
@@ -51,7 +53,7 @@ export class DataStructure {
       row.appendChild(cell3);
       tableBody.appendChild(row);
       const nestedTable = document.createElement("table");
-      nestedTable.classList.add("collapse");
+      nestedTable.classList.add("nested-table");
       for (let j = 0; j < this.finalData[i].numberOfUsers; j++) {
         const nestedRow = document.createElement("tr");
         const nestedCell1 = document.createElement("td");
@@ -62,6 +64,7 @@ export class DataStructure {
         nestedRow.appendChild(nestedCell2);
         nestedTable.appendChild(nestedRow);
       }
+      const showButton = new ShowButton(nestedTable, row);
       tableBody.appendChild(nestedTable);
     }
   };

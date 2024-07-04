@@ -5,9 +5,14 @@
 #app-container {
 }
 
-.collapse .icon-class:before {
-  content: ">";
+.show-button {
+  height: 30px;
 }
-.icon-class:before {
-  content: "v";
+
+.table-is-visible {
+  display: block;
+}
+
+.nested-table {
+  display: none;
 }
