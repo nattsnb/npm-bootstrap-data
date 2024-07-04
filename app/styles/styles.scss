@@ -3,7 +3,11 @@
 @import "heading";
 
 #app-container {
-  height: 200px;
-  width: 400px;
-  background-color: aquamarine;
+}
+
+.collapse .icon-class:before {
+  content: ">";
+}
+.icon-class:before {
+  content: "v";
 }

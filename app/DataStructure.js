@@ -50,6 +50,19 @@ export class DataStructure {
       row.appendChild(cell2);
       row.appendChild(cell3);
       tableBody.appendChild(row);
+      const nestedTable = document.createElement("table");
+      nestedTable.classList.add("collapse");
+      for (let j = 0; j < this.finalData[i].numberOfUsers; j++) {
+        const nestedRow = document.createElement("tr");
+        const nestedCell1 = document.createElement("td");
+        const nestedCell2 = document.createElement("td");
+        nestedCell1.innerHTML = this.finalData[i].users[j].name;
+        nestedCell2.innerHTML = this.finalData[i].users[j].email;
+        nestedRow.appendChild(nestedCell1);
+        nestedRow.appendChild(nestedCell2);
+        nestedTable.appendChild(nestedRow);
+      }
+      tableBody.appendChild(nestedTable);
     }
   };
 }
