@@ -42,30 +42,36 @@ export class DataStructure {
     const tableBody = document.querySelector(".table-body");
     for (let i = 0; i < this.finalData.length; i++) {
       const row = document.createElement("tr");
-      const cell1 = document.createElement("td");
-      const cell2 = document.createElement("td");
-      const cell3 = document.createElement("td");
-      cell1.innerHTML = i + 1;
-      cell2.innerHTML = this.finalData[i].name;
-      cell3.innerHTML = this.finalData[i].numberOfUsers;
-      row.appendChild(cell1);
-      row.appendChild(cell2);
-      row.appendChild(cell3);
-      tableBody.appendChild(row);
+      this.createCompanyEntry(tableBody, row, i);
       const nestedTable = document.createElement("table");
       nestedTable.classList.add("nested-table");
       for (let j = 0; j < this.finalData[i].numberOfUsers; j++) {
-        const nestedRow = document.createElement("tr");
-        const nestedCell1 = document.createElement("td");
-        const nestedCell2 = document.createElement("td");
-        nestedCell1.innerHTML = this.finalData[i].users[j].name;
-        nestedCell2.innerHTML = this.finalData[i].users[j].email;
-        nestedRow.appendChild(nestedCell1);
-        nestedRow.appendChild(nestedCell2);
-        nestedTable.appendChild(nestedRow);
+        this.createNestedEntry(nestedTable, i, j);
       }
       const showButton = new ShowButton(nestedTable, row);
       tableBody.appendChild(nestedTable);
     }
+  };
+  createCompanyEntry = (tableBody, row, i) => {
+    const cell1 = document.createElement("td");
+    const cell2 = document.createElement("td");
+    const cell3 = document.createElement("td");
+    cell1.innerHTML = i + 1;
+    cell2.innerHTML = this.finalData[i].name;
+    cell3.innerHTML = this.finalData[i].numberOfUsers;
+    row.appendChild(cell1);
+    row.appendChild(cell2);
+    row.appendChild(cell3);
+    tableBody.appendChild(row);
+  };
+  createNestedEntry = (nestedTable, i, j) => {
+    const nestedRow = document.createElement("tr");
+    const nestedCell1 = document.createElement("td");
+    const nestedCell2 = document.createElement("td");
+    nestedCell1.innerHTML = this.finalData[i].users[j].name;
+    nestedCell2.innerHTML = this.finalData[i].users[j].email;
+    nestedRow.appendChild(nestedCell1);
+    nestedRow.appendChild(nestedCell2);
+    nestedTable.appendChild(nestedRow);
   };
 }
